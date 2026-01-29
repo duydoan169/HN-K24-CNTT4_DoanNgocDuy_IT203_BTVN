@@ -30,6 +30,7 @@ public class Main {
                     length--;
                     break;
                 case 5:
+                    searchStudent(arr, length);
                     break;
                 case 6:
                     System.out.println("Da thoat chuong trinh");
