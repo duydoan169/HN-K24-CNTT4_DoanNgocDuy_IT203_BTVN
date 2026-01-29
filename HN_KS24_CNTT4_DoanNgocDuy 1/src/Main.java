@@ -1,4 +1,5 @@
 import java.util.Scanner;
+import java.util.regex.Pattern;
 
 public class Main {
     static Scanner sc = new Scanner(System.in);
@@ -25,6 +26,8 @@ public class Main {
                     updateStudent(arr, length);
                     break;
                 case 4:
+                    deleteStudent(arr, length);
+                    length--;
                     break;
                 case 5:
                     break;
@@ -95,5 +98,47 @@ public class Main {
         }while (!studentId.matches("^B\\d{7}$"));
     }
 
+    static void deleteStudent(String[] arr, int length){
+        System.out.println("Nhap MSSV can xoa: ");
+        String target = sc.nextLine();
 
+        int index = -1;
+        for (int i = 0; i < length; i++) {
+            if (arr[i].equals(target)) {
+                index = i;
+                break;
+            }
+        }
+
+        if (index == -1) {
+            System.out.println("Khong tim thay MSSV");
+            return;
+        }
+
+        for (int i = index; i < length - 1; i++) {
+            arr[i] = arr[i + 1];
+        }
+
+        arr[length - 1] = null;
+        System.out.println("Xoa MSSV thanh cong");
+    }
+
+    static void searchStudent(String[] arr, int length) {
+        System.out.print("Nhap chuoi can tim: ");
+        String keyword = sc.nextLine();
+
+        Pattern p = Pattern.compile(keyword, Pattern.CASE_INSENSITIVE);
+        boolean found = false;
+
+        for (int i = 0; i < length; i++) {
+            if (p.matcher(arr[i]).find()) {
+                System.out.println(arr[i]);
+                found = true;
+            }
+        }
+
+        if (!found) {
+            System.out.println("Khong tim thay MSSV");
+        }
+    }
 }
