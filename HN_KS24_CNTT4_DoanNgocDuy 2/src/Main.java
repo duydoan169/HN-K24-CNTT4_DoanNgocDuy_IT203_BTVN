@@ -22,14 +22,14 @@ public class Main {
                         do {
                             System.out.println("Nhap ma sinh vien(VD: SV123): ");
                             String studentId = sc.nextLine();
-                            if(!studentId.startsWith("SV") || !studentId.endsWith("\\d{3}")){
+                            if(!studentId.matches("SV\\d{3}")){
                                 System.out.println("Ma sinh vien phai bat dau voi SV va ket thuc voi 3 chu so");
                                 check = 1;
                                 continue;
                             }
                             System.out.println("Nhap ten sinh vien: ");
                             String studentName = sc.nextLine();
-                            if(!studentName.isBlank()){
+                            if(studentName.isBlank()){
                                 System.out.println("Ten sinh vien khong duoc de trong");
                                 check = 1;
                                 continue;
@@ -37,15 +37,14 @@ public class Main {
 
                             System.out.println("Nhap diem so sinh vien: ");
                             double studentScore = sc.nextDouble(); sc.nextLine();
-                            if(studentScore < 0){
-                                System.out.println("Diem so khong duoc am");
+                            if(studentScore < 0 || studentScore > 10){
+                                System.out.println("Diem so khong duoc am hoac lon hon 10");
                                 check = 1;
                                 continue;
                             }
                             students[pos++] = new Student(studentId, studentName, studentScore);
-
+                            check = 0;
                         }while(check != 0);
-
                     }
                     break;
                 case 2:
