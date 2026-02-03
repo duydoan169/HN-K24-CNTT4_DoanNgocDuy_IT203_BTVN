@@ -68,6 +68,25 @@ public class Main {
                     }
                     break;
                 case 4:
+                    if (pos == 0) {
+                        System.out.println("Danh sach rong");
+                        break;
+                    }
+
+                    for (int i = 0; i < pos - 1; i++) {
+                        for (int j = i + 1; j < pos; j++) {
+                            if (students[i].getScore() < students[j].getScore()) {
+                                Student temp = students[i];
+                                students[i] = students[j];
+                                students[j] = temp;
+                            }
+                        }
+                    }
+
+                    System.out.println("Da sap xep sinh vien theo diem giam dan:");
+                    for (int i = 0; i < pos; i++) {
+                        students[i].showInfo();
+                    }
                     break;
                 case 5:
                     System.out.println("Da thoat chuogn trinh");
