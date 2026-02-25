@@ -9,7 +9,7 @@ public class FruitJuice extends Drink implements IMixable{
     @Override
     double calculatePrice() {
         int price = getPrice();
-        return price - (price * discountPercent/100);
+        return price - ((double) (price * discountPercent) /100);
     }
 
     @Override
