@@ -10,7 +10,7 @@ public class ProductRepository implements IRepository<Product>{
 
     @Override
     public boolean add(Product item) {
-        if (hashMap.get(item.getId()) == null){
+        if (hashMap.get(item.getId()) != null){
             return false;
         }
         products.add(item);
